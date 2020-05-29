@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'todo_add' %}">Add ToDo</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{ todo.description }}</h3>
+            <p class="card-text">
+                <span class="text-muted">Description: </span>
+                {{ todo.content }}
+            </p>
+            <p class="card-text">
+                <span class="text-muted">Status: </span>
+                {{ todo.get_status_display }}
+            </p>
+            <p class="card-text">
+                <span class="text-muted">Deadline: </span>
+                {{ todo.date }}
+            </p>
+        </div>
+    </div>
+{% endblock %}

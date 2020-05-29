@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'todo_add' %}">Add ToDo</a></li>
+{% endblock %}
+
+{% block content %}
+    <h2>ToDo List</h2>
+    <div class="row">
+        {% for todo in todos %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ todo.description }}</h5>
+                    <p class="card-text">
+                        <span class="text-muted">Status: </span>
+                        {{ todo.get_status_display }}
+                    </p>
+                    <p class="card-text">
+                        <span class="text-muted">Deadline: </span>
+                        {{ todo.date }}
+                    </p>
+                    <a href="{% url 'todo' pk=todo.pk %}" class="card-link text-info">Details</a>
+                    <a href="{% url 'todo_edit' pk=todo.pk %}" class="card-link text-warning">Edit</a>
+                    <a href="{% url 'todo_delete' pk=todo.pk %}" class="card-link text-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

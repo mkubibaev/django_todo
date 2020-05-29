@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit ToDo{% endblock %}
+
+{% block content %}
+    <h2>New ToDo</h2>
+    <form method="post" action="{% url 'todo_edit' todo.pk %}">
+        {% include 'partial/todo_form.html' with button_text='Edit' %}
+    </form>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}New ToDo{% endblock %}
+
+{% block content %}
+    <h2>New ToDo</h2>
+    <form method="post" action="{% url 'todo_add' %}" novalidate>
+        {% include 'partial/todo_form.html' with button_text='Create' %}
+    </form>
+{% endblock %}
